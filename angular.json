@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MyRh-FrontEnd": {
+    "getHired-FrontEnd": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "MyRh-FrontEnd:build:production"
+              "buildTarget": "getHired-FrontEnd:build:production"
             },
             "development": {
-              "buildTarget": "MyRh-FrontEnd:build:development"
+              "buildTarget": "getHired-FrontEnd:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "MyRh-FrontEnd:build"
+            "buildTarget": "getHired-FrontEnd:build"
           }
         },
         "test": {

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from '../../Components/footer/footer.component';
 import { NavbarComponent } from '../../Components/navbar/navbar.component';
+import { FeaturesComponent } from '../../Components/features/features.component';
+import { TestimonialsComponent } from '../../Components/testimonials/testimonials.component';
+import { ContactusComponent } from '../../Components/contactus/contactus.component';
 
 @Component({
     selector: 'app-home',
@@ -9,7 +12,11 @@ import { NavbarComponent } from '../../Components/navbar/navbar.component';
     styleUrl: './home.component.scss',
     imports: 
     [FooterComponent,
-    NavbarComponent]
+    NavbarComponent,
+    FeaturesComponent,
+    TestimonialsComponent,
+    ContactusComponent
+]
 })
 export class HomeComponent {
 
