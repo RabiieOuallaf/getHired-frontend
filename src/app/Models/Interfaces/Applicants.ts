@@ -7,4 +7,6 @@ export interface Applicant {
     address: string;
     experience: string;
     education: string;
+    accessToken?: string;
+    refreshToken?: string;
   }
