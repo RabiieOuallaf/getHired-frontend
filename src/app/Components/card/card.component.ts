@@ -42,14 +42,7 @@ export class CardComponent implements OnInit {
     );
   }
 
-  // PopUp  ==================================
-  // formData = {
-  //   name: '',
-  //   email: '',
-  //   phone: '',
-  //   resume: null,
-  //   id: 0,
-  // };
+
 
   private initializeForms() {
     this.applicationForms = this.offers.map((offer) => {

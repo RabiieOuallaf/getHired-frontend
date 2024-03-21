@@ -1,0 +1,79 @@
+<div class="min-h-screen bg-gray-100 p-0 sm:p-12 relative">
+  <div class="flex items-center justify-center my-4 z-50">
+    <button
+      class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-4 px-6 rounded-full shadow-md"
+      (click)="togglePopUp()"
+    >
+      +
+    </button>
+
+    <app-industry-popup
+      *ngIf="isPopUpVisible"
+      (closePopup)="togglePopUp()"
+    ></app-industry-popup>
+  </div>
+
+  <table class="border-collapse w-full my-16 z-0">
+    <thead>
+      <tr>
+        <th
+          class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+        >
+          Id
+        </th>
+        <th
+          class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+        >
+          Name
+        </th>
+        <th
+          class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+        >
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let industry of Industries"
+        class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
+      >
+        <td
+          class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+        >
+          <span
+            class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+            >Company name</span
+          >
+          {{ industry.id }}
+        </td>
+        <td
+          class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static"
+        >
+          <span
+            class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+            >Country</span
+          >
+          {{ industry.name }}
+        </td>
+        <td
+          class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static"
+        >
+          <span
+            class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+            >Actions</span
+          >
+          <a
+            (click)="deleteIndustry(industry.name)" 
+            class="text-blue-400 hover:text-blue-600 underline"
+            >Edit</a
+          >
+          <a  (click)="deleteIndustry(industry.name)"
+              class="text-blue-400 hover:text-blue-600 underline pl-6"
+            >Remove</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
