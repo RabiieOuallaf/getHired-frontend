@@ -24,25 +24,14 @@ export class DashboardComponent implements OnInit{
     constructor(private jobOfferService: JobOfferService,private route: ActivatedRoute,private router: Router){}
 
     ngOnInit(): void {
-        this.company = history.state.company;
-
-        if (this.company) {
-        this.getCreatedOffers(this.company.name);
-        }
+      this.isAdminLoggedIn();
     }
 
-    getCreatedOffers(company: string) {
-        this.jobOfferService.getOfferByCompany(company).subscribe(
-          (jobOffers: JobOffer[]) => {
-            console.log('Job offers:', jobOffers);
-            this.jobOffers = jobOffers;
-          }
-        );
+    isAdminLoggedIn(): any {
+      const isAdminLoggedIn = localStorage.getItem('admin_access_token') !== null;
+      if (!isAdminLoggedIn) {
+        this.router.navigate(['/auth']);
       }
-
-    viewDetails(id: number|undefined) {
-        console.log(id);
-        this.router.navigate(['/details'], { state: { id } })
     }
 
 }

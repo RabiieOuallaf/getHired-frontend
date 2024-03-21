@@ -1,9 +1,10 @@
 import Swal from 'sweetalert2';
-import { Company } from './../../Models/Interfaces/Company';
-import { CompanyService } from './../../Services/Company/company.service';
+import { Company } from '../../../Models/Interfaces/Company';
 import { Component, OnInit} from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AdminService } from '../../../Services/Admin/admin.service';
+import { Admin } from '../../../Models/Interfaces/Admin';
 
 @Component({
   selector: 'app-auth',
@@ -16,11 +17,10 @@ export class AuthComponent implements OnInit{
   
 
   public authForm !: FormGroup;
-  constructor(private formBuilder: FormBuilder, private companyService: CompanyService,private router: Router){}
+  constructor(private formBuilder: FormBuilder, private adminService: AdminService,private router: Router){}
 
   ngOnInit(): void {
     this.initializeForm();
-    this.onSubmit();
     }
 
     private initializeForm() {
@@ -38,15 +38,21 @@ export class AuthComponent implements OnInit{
 
       console.log(this.authForm.value);
 
-      this.companyService.authentication(this.authForm.value).subscribe(
-        (company: Company) => {
+      this.adminService.authentication(this.authForm.value).subscribe(
+        (admin: Admin) => {
           Swal.fire({
             title: 'Success!',
-            text: `Welcome ${company.name} admin.`,
+            text: `Welcome ${admin.email} admin.`,
             icon: 'success',
             confirmButtonText: 'OK',
           });
-          this.router.navigate(['/dashboard'], { state: { company } });
+          
+          localStorage.setItem('admin_email', admin.email);
+          localStorage.setItem('admin_role', admin.role);
+          localStorage.setItem('admin_access_token', admin.accessToken ? admin.accessToken : '');
+          localStorage.setItem('admin_refresh_token', admin.refreshToken ? admin.refreshToken : '');
+
+          this.router.navigate(['/dashboard']);
         },(_error) => {
           Swal.fire({
             title: 'Error!',

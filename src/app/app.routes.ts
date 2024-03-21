@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './Views/home/home.component';
 import { OffersComponent } from './Views/offers/offers.component';
 import { DashboardComponent } from './Views/dashboard/dashboard.component';
-import { AuthComponent } from './Views/auth/auth.component';
+import { AuthComponent } from './Views/auth/admin/auth.component';
 import { DetailsComponent } from './Views/details/details.component';
 import { RegisterComponent } from './Views/auth/register/register.component';
 import { LoginComponent } from './Views/auth/login/login.component';
