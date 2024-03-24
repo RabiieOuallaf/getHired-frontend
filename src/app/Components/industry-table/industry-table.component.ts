@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from 'express';
 import { IndustryService } from '../../Services/Industry/industry.service';
 import { Industry } from '../../Models/Interfaces/Industry';
 import { CommonModule } from '@angular/common';

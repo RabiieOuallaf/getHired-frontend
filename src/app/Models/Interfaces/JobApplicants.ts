@@ -1,9 +1,9 @@
-import { JobOffer } from "./JobOffer";
+import { Offer } from "./Offer";
 import { Applicant } from "./Applicants";
 export interface JobApplicants {
     id?: number;
     status: string;
     date: Date;
-    jobOffer: JobOffer;
+    jobOffer: Offer;
     applicant: Applicant;
   } 

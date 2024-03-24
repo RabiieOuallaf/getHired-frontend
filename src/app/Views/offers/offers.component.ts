@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { CardComponent } from "../../Components/card/card.component";
 import { NavbarComponent } from "../../Components/navbar/navbar.component";
 import { FooterComponent } from "../../Components/footer/footer.component";
 import { PopupComponent } from "../../Components/popup/popup.component";
+import { JobCardComponent } from '../../Components/job-card/job-card.component';
 
 
 @Component({
@@ -10,7 +10,9 @@ import { PopupComponent } from "../../Components/popup/popup.component";
     standalone: true,
     templateUrl: './offers.component.html',
     styleUrl: './offers.component.scss',
-    imports: [CardComponent, NavbarComponent, FooterComponent, PopupComponent]
+    imports: [ NavbarComponent, FooterComponent, PopupComponent, JobCardComponent]
 })
 export class OffersComponent {
+
 }
+

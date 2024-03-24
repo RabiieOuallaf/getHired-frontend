@@ -102,7 +102,7 @@
           placeholder="birthdate"
         />
       </div>
-	  <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+      <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5 text-gray-400"
@@ -115,14 +115,10 @@
             clip-rule="evenodd"
           />
         </svg>
-        <input
-          class="pl-2 outline-none border-none"
-          type="number"
-          name="industry_id"
-		  formControlName="industry_id"
-          id=""
-          placeholder="industry"
-        />
+        <select class="pl-2 outline-none border-none" formControlName="industry_id">
+          <option value="" disabled selected>Select Industry</option>
+          <option *ngFor="let industry of Industry" [value]="industry.id">{{ industry.name }}</option>
+        </select>
       </div>
 	  <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
         <svg
@@ -146,7 +142,7 @@
           placeholder="education level"
         />
       </div>
-	  <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+      <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5 text-gray-400"
@@ -159,14 +155,10 @@
             clip-rule="evenodd"
           />
         </svg>
-        <input
-          class="pl-2 outline-none border-none"
-          type="number"
-          name="education_institute_id"
-		  formControlName="education_institute_id"
-          id=""
-          placeholder="education institute "
-        />
+        <select class="pl-2 outline-none border-none" formControlName="education_institute_id">
+          <option value="" disabled selected>Select Education Institute</option>
+          <option *ngFor="let institute of EducationInstitute" [value]="institute.id">{{ institute.name }}</option>
+        </select>
       </div>
       
       <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">

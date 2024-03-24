@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormsModule,
   ReactiveFormsModule,
@@ -10,19 +10,39 @@ import { Router } from '@angular/router';
 import { ApplicantService } from '../../../Services/Applicant/applicant.service';
 import { Applicant } from '../../../Models/Interfaces/Applicants';
 import Swal from 'sweetalert2';
+import { educationInstitute } from '../../../Models/Interfaces/educationInstitue';
+import { Industry } from '../../../Models/Interfaces/Industry';
+import { EducationInstituteService } from '../../../Services/EducationInstitute/education-institute.service';
+import { IndustryService } from '../../../Services/Industry/industry.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent {
-  constructor(private formBuilder: FormBuilder, private router: Router, private applicantService: ApplicantService) {}
+
+export class RegisterComponent implements OnInit{
+
+  public EducationInstitute: educationInstitute[] = [];
+  public Industry: Industry[] = [];
+
+
+  constructor(
+      
+    private formBuilder: FormBuilder, 
+    private router: Router, 
+    private applicantService: ApplicantService,
+    private educationInstituteService: EducationInstituteService,
+    private industryService: IndustryService
+    ) {}
 
   ngOnInit(): void {
     this.initializeForm();
+    this.getEducationInstitutes();
+    this.getIndustries();
   }
 
   public authForm!: FormGroup;
@@ -39,7 +59,6 @@ export class RegisterComponent {
       education_institute_id: this.formBuilder.control('', [
         Validators.required,
       ]),
-      phone: this.formBuilder.control('', [Validators.required]),
     });
   }
 
@@ -52,9 +71,9 @@ export class RegisterComponent {
       birthdate,
       industry_id,
       education_level,
-      education_institute_id,
-      phone,
+      education_institute_id
     } = this.authForm.value;
+    
 
     this.applicantService.register(this.authForm.value).subscribe(
       (applicant: Applicant) => {
@@ -81,4 +100,21 @@ export class RegisterComponent {
     )
   }
 
+  getEducationInstitutes() {
+    this.educationInstituteService.getEducationInstitutes().subscribe(
+      (data: educationInstitute[]) => {
+
+        this.EducationInstitute = data;
+      }
+    )
+  }
+  
+  getIndustries() {
+    this.industryService.getIndustries().subscribe(
+      (data: Industry[]) => {
+
+        this.Industry = data;
+      }
+    )
+  }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { JobOffer } from '../../Models/Interfaces/JobOffer';
+import { Offer } from '../../Models/Interfaces/Offer';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -9,19 +9,11 @@ export class JobOfferService {
 
   constructor(private http: HttpClient) { }
 
-  private endPoint = 'http://localhost:8080/api/offers';
+  private endPoint = 'http://127.0.0.1:5000/api/v1/freelance';
 
-  getAllOffers(): Observable<JobOffer[]>{
-    return this.http.get<JobOffer[]>(this.endPoint);
+  getAllOffers(): Observable<Offer[]>{
+    return this.http.get<Offer[]>(this.endPoint);
   }
 
-  getOfferByTitle(title: string): Observable<JobOffer[]>{
-    const singleOfferEndPoint = `${this.endPoint}/${title}`;
-    return this.http.get<JobOffer[]>(singleOfferEndPoint);
-  }
-
-  getOfferByCompany(company: string): Observable<JobOffer[]>{
-    const singleOfferEndPoint = `${this.endPoint}/company/${company}`;
-    return this.http.get<JobOffer[]>(singleOfferEndPoint);
-  }
+  
 }

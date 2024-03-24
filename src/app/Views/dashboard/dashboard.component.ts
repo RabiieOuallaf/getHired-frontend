@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from "../../Components/navbar/navbar.component";
 import { FooterComponent } from "../../Components/footer/footer.component";
 import { TableComponent } from "../../Components/table/table.component";
-import { JobOffer } from '../../Models/Interfaces/JobOffer';
 import { ActivatedRoute } from '@angular/router';
 import { Company } from '../../Models/Interfaces/Company';
 import { CommonModule } from '@angular/common';
@@ -28,7 +27,6 @@ import { IndustryPopupComponent } from '../../Components/industry-popup/industry
 export class DashboardComponent implements OnInit{
 
     public company: Company | undefined;
-    public jobOffers: JobOffer[] = [];
     activeTable: string = ''; 
 
     constructor(private jobOfferService: JobOfferService,private route: ActivatedRoute,private router: Router){}
