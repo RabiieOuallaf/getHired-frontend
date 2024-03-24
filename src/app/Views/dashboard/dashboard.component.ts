@@ -36,7 +36,6 @@ export class DashboardComponent implements OnInit{
       this.activeTable = tableName;
     }
     ngOnInit(): void {
-      this.isAdminLoggedIn();
     }
 
     isAdminLoggedIn(): any {
