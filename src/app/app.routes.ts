@@ -6,8 +6,8 @@ import { AuthComponent } from './Views/auth/admin/auth.component';
 import { DetailsComponent } from './Views/details/details.component';
 import { RegisterComponent } from './Views/auth/register/register.component';
 import { LoginComponent } from './Views/auth/login/login.component';
-import { AdminGuard } from './Core/guard/AdminGuard';
-import { JobFeedGuard } from './Core/guard/JobFeedGuard';
+import { AdminGuard } from './Core/guards/AdminGuard';
+import { JobFeedGuard } from './Core/guards/JobFeedGuard';
 
 export const routes: Routes = [
      { path:'', component : HomeComponent,},
